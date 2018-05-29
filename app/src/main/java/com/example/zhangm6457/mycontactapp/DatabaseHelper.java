@@ -41,10 +41,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_ENTRIES);
     }
 
-    public void onOpen(SQLiteDatabase db){
+    /*public void onOpen(SQLiteDatabase db){
         Log.d("MyContactApp", "DatabaseHelper: opening database");
         db.execSQL(SQL_CREATE_ENTRIES);
-    }
+    }*/
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -79,4 +79,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor res = db.rawQuery("select * from " + TABLE_NAME, null);
         return res;
     }
+
+    
+
+
 }

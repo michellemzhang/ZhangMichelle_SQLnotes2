@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="132dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="8dp"
         android:onClick="addData"
         android:text="Add Contact"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,10 +88,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="124dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:onClick="viewData"
         android:text="View Contacts"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_addcontact" />
+
+    <Button
+        android:id="@+id/button_searchcontacts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="12dp"
+        android:onClick="searchRecord"
+        android:text="Search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_viewcontacts" />
 
 </android.support.constraint.ConstraintLayout>

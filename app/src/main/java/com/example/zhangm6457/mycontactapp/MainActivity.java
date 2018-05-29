@@ -1,5 +1,6 @@
 package com.example.zhangm6457.mycontactapp;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -76,5 +77,37 @@ public class MainActivity extends AppCompatActivity {
         builder.setTitle(title);
         builder.setMessage(message);
         builder.show();
+    }
+
+    public static final String EXTRA_MESSAGE = "com.example.zhangm6457.mycontactapp.MESSAGE";
+
+    public void searchRecord(View view){
+        Log.d("MyContactApp", "MainActivity: launching SearchActivity");
+        Intent intent = new Intent(this, SearchActivity.class);
+
+        //creating the StringBuffer to search
+        Cursor res = myDb.getAllData();
+        Log.d("MyContactApp", "MainActivity: SearchRecord: received cursor");
+
+        if (res.getCount() == 0){
+            showMessage("Error", "No data found in database");
+            Log.d("MyContactApp", "MainActivity: SearchRecord: no data in database");
+            return;
+        }
+
+        StringBuffer buffer1 = new StringBuffer();
+        while (res.moveToNext()){
+            if (res.getString(1).equals(editName.getText().toString())){
+                buffer1.append(res.getString(1) + "\n");
+                buffer1.append(res.getString(2) + "\n");
+                buffer1.append(res.getString(3) + "\n" + "\n");
+
+            }
+        }
+
+        Log.d("MyContactApp", "MainActivity: SearchRecord: created StringBuffer");
+
+        intent.putExtra(EXTRA_MESSAGE, buffer1.toString());
+        startActivity(intent);
     }
 }
