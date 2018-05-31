@@ -96,13 +96,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         StringBuffer buffer1 = new StringBuffer();
-        while (res.moveToNext()){
-            if (res.getString(1).equals(editName.getText().toString())){
+
+        boolean isTrue = false;
+        while (res.moveToNext()) {
+            if (res.getString(1).equals(editName.getText().toString())) {
+                isTrue = true;
                 buffer1.append(res.getString(1) + "\n");
                 buffer1.append(res.getString(2) + "\n");
                 buffer1.append(res.getString(3) + "\n" + "\n");
-
             }
+        }
+        if (isTrue == false){
+            buffer1.append("Entry does not exist");
         }
 
         Log.d("MyContactApp", "MainActivity: SearchRecord: created StringBuffer");
